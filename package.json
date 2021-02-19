@@ -2,15 +2,12 @@
   "name": "markdown-it-attr-link-replacer",
   "version": "1.1.0",
   "description": "markdown-it plugin for replacing links (image & text) in the markdown document.",
-  "main": "dist/index.js",
-  "files": [
-    "dist/index.js"
-  ],
+  "main": "dist/index",
+  "typings": "dist/index",
   "scripts": {
     "build": "tsc",
     "clean": "rimraf dist",
-    "test": "npm run lint; mocha -r ts-node/register src/**/*.spec.ts",
-    "lint": "standard"
+    "test": "mocha -r ts-node/register src/**/*.spec.ts"
   },
   "repository": {
     "type": "git",
@@ -37,7 +34,6 @@
     "markdown-it": "*",
     "markdown-it-testgen": "*",
     "mocha": "^7.2.0",
-    "standard": "*",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.5"
   },

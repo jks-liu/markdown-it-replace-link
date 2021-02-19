@@ -2,11 +2,11 @@ import cheerio from "cheerio";
 import MarkdownIt from "markdown-it";
 import Token from "markdown-it/lib/token";
 
-export type Callback = (link: string, env: any, token?: Token) => string;
+export type Callback = (link: string, env: any) => string;
 
 export interface Options {
   callback?: Callback;
-  includeAttrs?: string[];
+  attributes?: string[];
 }
 
 function replaceAttr(
@@ -17,7 +17,7 @@ function replaceAttr(
 ) {
   token.attrs?.forEach(function (attr) {
     if (attr[0] === attrName) {
-      attr[1] = replace(attr[1], env, token);
+      attr[1] = replace(attr[1], env);
     }
   });
 }
@@ -25,7 +25,7 @@ function replaceAttr(
 export default function (md: MarkdownIt, opts: MarkdownIt.Options & Options) {
   md.core.ruler.after("inline", "replace-link", function (state) {
     var callback: Callback | undefined = opts?.callback;
-    var includeAttrs: string[] = opts?.includeAttrs || [];
+    var attributes: string[] = opts?.attributes || ["src", "href"];
 
     if (!callback || typeof callback !== "function") {
       return false;
@@ -33,21 +33,21 @@ export default function (md: MarkdownIt, opts: MarkdownIt.Options & Options) {
 
     state.tokens.forEach(function (blockToken) {
       if (blockToken.type === "inline" && blockToken.children) {
-        blockToken.children.forEach(function (token) {
+        blockToken.children.forEach(function (token: Token) {
           var type = token.type;
-          if (type === "link_open") {
+          if (type === "link_open" && attributes.includes("href")) {
             replaceAttr(token, "href", callback!, state.env);
-          } else if (type === "image") {
+          } else if (type === "image" && attributes.includes("src")) {
             replaceAttr(token, "src", callback!, state.env);
           }
         });
       }
-      if (blockToken.type == "html_block" && includeAttrs.length > 0) {
+      if (blockToken.type == "html_block" && attributes.length > 0) {
         let $ = cheerio.load(blockToken.content, {
           // used the avoid auto-wrapping
           xmlMode: true,
         });
-        includeAttrs.forEach(function (attribute) {
+        attributes.forEach(function (attribute) {
           let attributeValue = $(`[${attribute}]`).attr(attribute);
           if (!attributeValue) {
             return;
