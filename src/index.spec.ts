@@ -2,12 +2,6 @@
 import path from "path";
 import { expect } from "chai";
 import dedent from "dedent-js";
-var generate = require("markdown-it-testgen");
-import fs from "fs";
-// var fixtures = {
-//   env: fs.readFileSync(path.join(__dirname, "fixtures/env.txt"), "utf-8"),
-//   tocPath: path.join(__dirname, "fixtures/toc.txt"),
-// };
 import mdReplaceLink from "./";
 import markdownIt from "markdown-it";
 import Token from "markdown-it/lib/token";
