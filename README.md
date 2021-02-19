@@ -1,21 +1,27 @@
-# @mblaex99/markdown-it-replace-link
+# @mbalex99/markdown-it-replace-link
 
 [![TypeScript](https://badges.frapsoft.com/typescript/love/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 
 This is a fork of [Martin Heidegger](https://github.com/martinheidegger)'s [markdown-it-replace-link](https://github.com/martinheidegger/markdown-it-replace-link) plugin.
 
-However, I needed it for our startups' website with some more customizations that are probably too heavy for a lot of users of the original library. 
+However, I needed it for [Ditto](https://www.ditto.live) website with some more customizations that are probably too heavy for a lot of users of the original library. 
 
 ## What are the differences?
 
 * Original library only handled links for `a` and `img` tags
-* It'd ignore 
-
+* Original will ignore other raw html attributes that may be links.
+* This plugin however allows additional specifications 
 
 
 > markdown-it plugin for replacing links (image & text) in the markdown document.
 
 ## Usage
+
+### Installation
+
+```
+npm install @mbalex99/markdown-it-replace-link -S
+```
 
 #### Enable plugin
 
@@ -23,6 +29,7 @@ However, I needed it for our startups' website with some more customizations tha
 var md = require('markdown-it')({
     html: true    
 }).use(require('markdown-it-replace-link'), {
+    attributes: ['src', 'href']
     replaceLink: function (link, env) {
         return link + "?c=" + Date.now();
     }
