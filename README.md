@@ -1,4 +1,4 @@
-# @mbalex99/markdown-it-replace-link
+# markdown-it-attr-link-replacer
 
 [![TypeScript](https://badges.frapsoft.com/typescript/love/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 
@@ -20,7 +20,7 @@ However, I needed it for [Ditto](https://www.ditto.live) website with some more 
 ### Installation
 
 ```
-npm install @mbalex99/markdown-it-replace-link -S
+npm install markdown-it-attr-link-replacer -S
 ```
 
 #### Enable plugin
@@ -28,7 +28,7 @@ npm install @mbalex99/markdown-it-replace-link -S
 ```js
 var md = require('markdown-it')({
     html: true    
-}).use(require('markdown-it-replace-link'), {
+}).use(require('markdown-it-attr-link-replacer'), {
     attributes: ['src', 'href']
     replaceLink: function (link, env) {
         return link + "?c=" + Date.now();
@@ -47,7 +47,7 @@ and use this
 ```js
 var md = require('markdown-it')({
     html: true
-}).use(require('markdown-it-replace-link'), {
+}).use(require('markdown-it-attr-link-replacer'), {
     replaceLink: function (link, env) {
         return "http://me.com/" + link;
     }
@@ -61,10 +61,7 @@ This will result in the link prefixed with the `http://me.com/` like:
 <p><a href="http://me.com/test">Hello</a></p>
 ```
 
-Both images and html links will be processed.
-
-If using this in a browser, the script will create a variable 
-`window.markdownitReplaceLink` that can be passed to `.use()`.
+Both images and html links will be processed by default
 
 ### Testing
 

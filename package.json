@@ -1,5 +1,5 @@
 {
-  "name": "@mbalex99/markdown-it-replace-link",
+  "name": "markdown-it-attr-link-replacer",
   "version": "1.1.0",
   "description": "markdown-it plugin for replacing links (image & text) in the markdown document.",
   "main": "dist/index.js",
