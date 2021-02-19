@@ -5,14 +5,7 @@ Test1
 <p><a href="http://me.com/test">Hello</a></p>
 .
 
-Test3
-.
-![Hello](b)
-.
-<p><img src="image/b" alt="Hello"></p>
-.
-
-Test4
+Test With Custom Attributes
 .
 <p><div data-custom-attr-a="foo/bar" data-custom-attr-b="baz/buzz"></p>
 .

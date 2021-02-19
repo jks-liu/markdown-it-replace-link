@@ -1,33 +1,47 @@
 {
-  "name": "markdown-it-replace-link",
+  "name": "@mbalex99/markdown-it-replace-link",
   "version": "1.1.0",
   "description": "markdown-it plugin for replacing links (image & text) in the markdown document.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "files": [
+    "dist/index.js"
+  ],
   "scripts": {
-    "test": "npm run lint; npm run unit",
-    "unit": "mocha -R spec",
+    "build": "tsc",
+    "clean": "rimraf dist",
+    "test": "npm run lint; mocha -r ts-node/register src/**/*.spec.ts",
     "lint": "standard"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/martinheidegger/markdown-it-replace-link"
+    "url": "https://github.com/mbalex99/markdown-it-replace-link"
   },
   "keywords": [
     "markdown",
     "markdown-it",
     "markdown-it-plugin"
   ],
-  "author": "Martin Heidegger",
+  "author": "Maximilian Alexander",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/martinheidegger/markdown-it-replace-link/issues"
+    "url": "https://github.com/mbalex99/markdown-it-replace-link/issues"
   },
-  "homepage": "https://github.com/martinheidegger/markdown-it-replace-link",
+  "homepage": "https://github.com/mbalex99/markdown-it-replace-link",
   "devDependencies": {
+    "@types/chai": "^4.2.15",
+    "@types/cheerio": "^0.22.24",
+    "@types/markdown-it": "^12.0.1",
+    "@types/mocha": "^8.2.1",
+    "@types/node": "^14.14.30",
+    "dedent-js": "^1.0.1",
     "markdown-it": "*",
     "markdown-it-testgen": "*",
     "mocha": "^7.2.0",
-    "standard": "*"
+    "standard": "*",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.5"
+  }
 }

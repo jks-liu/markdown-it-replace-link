@@ -1,4 +1,17 @@
-# markdown-it-replace-link
+# @mblaex99/markdown-it-replace-link
+
+[![TypeScript](https://badges.frapsoft.com/typescript/love/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
+
+This is a fork of [Martin Heidegger](https://github.com/martinheidegger)'s [markdown-it-replace-link](https://github.com/martinheidegger/markdown-it-replace-link) plugin.
+
+However, I needed it for our startups' website with some more customizations that are probably too heavy for a lot of users of the original library. 
+
+## What are the differences?
+
+* Original library only handled links for `a` and `img` tags
+* It'd ignore 
+
+
 
 > markdown-it plugin for replacing links (image & text) in the markdown document.
 
@@ -8,10 +21,12 @@
 
 ```js
 var md = require('markdown-it')({
+    html: true    
+}).use(require('markdown-it-replace-link'), {
     replaceLink: function (link, env) {
         return link + "?c=" + Date.now();
     }
-}).use(require('markdown-it-replace-link')); // <-- this use(package_name) is required
+}); // <-- this use(package_name) is required
 ```
 
 #### Example
@@ -24,10 +39,12 @@ and use this
 
 ```js
 var md = require('markdown-it')({
+    html: true
+}).use(require('markdown-it-replace-link'), {
     replaceLink: function (link, env) {
         return "http://me.com/" + link;
     }
-}).use(require('markdown-it-replace-link'));
+});
 ```
 
 
