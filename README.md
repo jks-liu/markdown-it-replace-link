@@ -29,7 +29,7 @@ npm install markdown-it-attr-link-replacer -S
 var md = require('markdown-it')({
     html: true    
 }).use(require('markdown-it-attr-link-replacer'), {
-    attributes: ['src', 'href']
+    attributes: ['src', 'href'],
     replaceLink: function (link, env) {
         return link + "?c=" + Date.now();
     }
